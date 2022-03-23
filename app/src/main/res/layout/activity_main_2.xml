@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="es.uam.eps.dadm.cards.MainViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{viewModel.card != null ? View.VISIBLE : View.INVISIBLE}">
+
+        <TextView
+            android:id="@+id/info_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50sp"
+            android:text="@{@string/due_cards_format(viewModel.nDueCards)}"
+            android:textSize="20sp"
+            tools:text="@string/info_text_view_message" />
+
+        <TextView
+            android:id="@+id/question_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120pt"
+            android:text="@{viewModel.card.question}"
+            android:textSize="20sp"
+            tools:text="Question" />
+
+        <View
+            android:id="@+id/separator_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/question_text_view"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            android:background="@android:color/darker_gray"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/answer_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separator_view"
+            android:layout_centerInParent="true"
+            android:text="@{viewModel.card.answer}"
+            android:textSize="20sp"
+            android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}"
+            tools:text="answer" />
+
+        <Button
+            android:id="@+id/answer_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/answer_text_view"
+            android:layout_marginTop="30dp"
+            android:text="@string/answer_button_text"
+            android:visibility="@{viewModel.card.answered ? View.INVISIBLE : View.VISIBLE}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/answer_button"
+            android:layout_centerHorizontal="true"
+            android:text="@string/help" />
+
+        <LinearLayout
+            android:id="@+id/difficulty_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50sp"
+            android:gravity="center"
+            android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}">
+
+            <Button
+                android:id="@+id/hard_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/red"
+                android:text="@string/hard" />
+
+            <Button
+                android:id="@+id/medium_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/orange"
+                android:text="@string/medium" />
+
+            <Button
+                android:id="@+id/easy_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green"
+                android:text="@string/easy" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

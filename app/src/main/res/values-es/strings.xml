@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cartas</string>
+    <string name="help">Ayuda</string>
+    <string name="hard">Difícil</string>
+    <string name="medium">Normal</string>
+    <string name="easy">Fácil</string>
+    <string name="no_more_cards">No quedan más cartas por revisar</string>
+    <string name="info_text_view_message">Número de cartas restantes</string>
+    <string name="due_cards_format">Quedan %d cartas</string>
+    <string name="title_text">Tarjetas</string>
+    <string name="subtitle_text">Pulsa para estudiar</string>
+</resources>
