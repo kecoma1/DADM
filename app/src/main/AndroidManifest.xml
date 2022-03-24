@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".StudyActivity"
             android:exported="true">
         </activity>
     </application>

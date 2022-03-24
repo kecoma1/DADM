@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import es.uam.eps.dadm.cards.databinding.ActivityMainBinding
+import es.uam.eps.dadm.cards.databinding.ActivityStudyBinding
 import timber.log.Timber
 
 
@@ -17,7 +17,7 @@ private const val ANSWERED_KEY = "es.uam.eps.dadm.cards:answered"
 
 
 class StudyActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityStudyBinding
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
@@ -26,9 +26,9 @@ class StudyActivity : AppCompatActivity() {
         // Assign quality's value from v
         // depending on the button clicked
         val quality = when (v?.id) {
-            binding.easyButton.id -> 5
-            binding.mediumButton.id -> 3
-            binding.hardButton.id -> 0
+            binding.easyButton?.id -> 5
+            binding.mediumButton?.id -> 3
+            binding.hardButton?.id -> 0
             else -> 5
         }
 
@@ -36,8 +36,8 @@ class StudyActivity : AppCompatActivity() {
         if (viewModel.card == null)
             Toast.makeText(this, R.string.no_more_cards, Toast.LENGTH_LONG).show()
 
-        fadeAnimation(R.anim.fade_in, binding.answerButton)
-        fadeAnimation(R.anim.fade_out, binding.difficultyButtons)
+        fadeAnimation(R.anim.fade_in, binding.answerButton!!)
+        fadeAnimation(R.anim.fade_out, binding.difficultyButtons!!)
         binding.invalidateAll()
     }
 
@@ -72,31 +72,31 @@ class StudyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Timber.plant(Timber.DebugTree())
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_study)
 
         binding.viewModel = viewModel
         Timber.i("$viewModel")
 
         viewModel.nDueCards.observe(this, Observer<Int> {
-            binding.infoTextView.text = it.toString()
+            binding.infoTextView?.text = it.toString()
         })
 
         binding.apply {
             // Listener for the answer button
-            answerButton.setOnClickListener {
+            answerButton?.setOnClickListener {
                 viewModel?.card?.answered = true
                 // Animations
-                fadeAnimation(R.anim.fade_in, answerTextView)
-                fadeAnimation(R.anim.fade_in, easyButton)
-                fadeAnimation(R.anim.fade_in, mediumButton)
-                fadeAnimation(R.anim.fade_in, hardButton)
+                fadeAnimation(R.anim.fade_in, answerTextView!!)
+                fadeAnimation(R.anim.fade_in, easyButton!!)
+                fadeAnimation(R.anim.fade_in, mediumButton!!)
+                fadeAnimation(R.anim.fade_in, hardButton!!)
                 fadeAnimation(R.anim.fade_out, answerButton)
                 invalidateAll()
             }
 
-            easyButton.setOnClickListener(listener)
-            mediumButton.setOnClickListener(listener)
-            hardButton.setOnClickListener(listener)
+            easyButton?.setOnClickListener(listener)
+            mediumButton?.setOnClickListener(listener)
+            hardButton?.setOnClickListener(listener)
         }
         Timber.i("onCreate called")
     }

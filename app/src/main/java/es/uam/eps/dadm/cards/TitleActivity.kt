@@ -14,5 +14,10 @@ class TitleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_title)
+
+        binding.titleRelLayout?.setOnClickListener {
+            val intent: Intent = Intent(this, StudyActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
