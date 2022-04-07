@@ -29,5 +29,9 @@ class CardsApplication : Application() {
 
     companion object {
         var cards: MutableList<Card> = mutableListOf()
+
+        fun numberOfDueCards(): Int {
+            return cards.count { c -> c.isDue() }
+        }
     }
 }

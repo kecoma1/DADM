@@ -42,6 +42,8 @@ open class Card(
         update(LocalDateTime.now())
     }
 
+    fun isDue(): Boolean { return isDue(LocalDateTime.now()) }
+
     fun isDue(date: LocalDateTime): Boolean {
         val cardDate = LocalDate.parse(this.nextPracticeDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay()
         return cardDate.isBefore(date) || cardDate.isEqual(date)

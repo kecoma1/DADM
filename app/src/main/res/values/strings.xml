@@ -10,5 +10,6 @@
     <string name="title_text">Cards</string>
     <string name="subtitle_text">Tap to study</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="review_cards">Review Cards</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

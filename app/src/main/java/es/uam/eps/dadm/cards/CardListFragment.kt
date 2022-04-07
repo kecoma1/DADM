@@ -1,7 +1,5 @@
 package es.uam.eps.dadm.cards
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,23 +8,23 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import es.uam.eps.dadm.cards.databinding.FragmentCardListBinding
 import es.uam.eps.dadm.cards.databinding.FragmentTitleBinding
 
-class TitleFragment: Fragment() {
-
+class CardListFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentTitleBinding>(
+        val binding = DataBindingUtil.inflate<FragmentCardListBinding>(
             inflater,
-            R.layout.fragment_title,
+            R.layout.fragment_card_list,
             container,
             false
         )
 
-        binding.cardsTitleTextView.setOnClickListener { view ->
+        binding.reviewCardsButton.setOnClickListener { view ->
             view.findNavController()
                 .navigate(R.id.action_titleFragment_to_studyActivity)
         }

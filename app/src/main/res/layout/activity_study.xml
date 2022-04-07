@@ -2,15 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModel"
-            type="es.uam.eps.dadm.cards.MainViewModel" />
-    </data>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +9,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/titleFragment"
-            android:name="es.uam.eps.dadm.cards.MainFragment"
+            android:name="es.uam.eps.dadm.cards.StudyFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

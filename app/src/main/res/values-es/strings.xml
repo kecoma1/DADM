@@ -10,4 +10,6 @@
     <string name="due_cards_format">Quedan %d cartas</string>
     <string name="title_text">Tarjetas</string>
     <string name="subtitle_text">Pulsa para estudiar</string>
+    <string name="review_cards">Revisar cartas</string>
+    <string name="hello_blank_fragment">Hola blank fragment</string>
 </resources>

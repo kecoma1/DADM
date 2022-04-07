@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import timber.log.Timber
 import java.time.LocalDateTime
 
-class MainViewModel : ViewModel() {
+class StudyViewModel : ViewModel() {
     var card: Card? = null
     private var cards: MutableList<Card> = CardsApplication.cards
 
@@ -39,6 +39,6 @@ class MainViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        Timber.i("MainViewModel destroyed")
+        Timber.i("StudyViewModel destroyed")
     }
 }
