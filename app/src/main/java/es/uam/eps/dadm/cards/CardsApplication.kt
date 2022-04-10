@@ -55,8 +55,18 @@ class CardsApplication : Application() {
         var decks: MutableList<Deck> = mutableListOf()
         var currentDeck: Deck? = null
 
-        // Card functions
-        fun numberOfDueCards(): Int { return currentDeck?.cards!!.count { c -> c.isDue() } }
+        /*
+        *
+        * ATTENTION:
+        * The code analyzer says that the next properties could be val instead of var. If we make
+        * this change, we have a big mistake because these values are going to be changed during
+        * the execution of the application.
+        */
+        var numberCards : Int = cards.size
+            get() = cards.size
+        var numberDecks : Int = decks.size
+            get() = decks.size
+
         fun getCard(id: String): Card? { return currentDeck?.cards!!.find { c -> c.id == id } }
         fun addCard(card: Card) { currentDeck?.cards!!.add(card) }
         fun delCard(card: Card) { currentDeck?.cards!!.remove(card) }
@@ -64,6 +74,11 @@ class CardsApplication : Application() {
         // Deck functions
         fun getDeck(id: String): Deck? { return decks.find { d -> d.id == id } }
         fun addDeck(deck: Deck) { decks.add(deck) }
-        fun delDeck(deck: Deck) { decks.remove(deck) }
+        fun delDeck(deck: Deck) { decks.remove(deck); cards.removeAll(deck.cards) }
+        fun decksInfo() : String {
+            var info = ""
+            decks.forEach { d -> info += d.name + " " + d.cards.size + " cards - " }
+            return info.substring(0, info.length-2)
+        }
     }
 }

@@ -14,7 +14,6 @@ open class Card(
     var id: String = UUID.randomUUID().toString()
 ) {
     private var quality: Int? = null
-    private val qualityOpt = mutableListOf(0, 3, 5)
 
     var answered = false
 
@@ -35,7 +34,7 @@ open class Card(
     /*
     *
     * ATTENTION:
-    * The code analizer says that the next properties could be val instead of var. If we make
+    * The code analyzer says that the next properties could be val instead of var. If we make
     * this change, we have a big mistake because these values are going to be changed during
     * the execution of the application.
     */
@@ -44,13 +43,13 @@ open class Card(
         get() = if (12 < answer.length) answer.substring(0, 11) + "..."
                 else answer
     var answerLongReduced: String = ""
-        get() = if (30 < answer.length) answer.substring(0, 27) + "..."
+        get() = if (25 < answer.length) answer.substring(0, 22) + "..."
                 else answer
     var questionReduced: String = ""
         get() = if (12 < question.length) question.substring(0, 11) + "..."
                 else question
     var questionLongReduced: String = ""
-        get() = if (30 < question.length) question.substring(0, 27) + "..."
+        get() = if (25 < question.length) question.substring(0, 22) + "..."
                 else question
     var easinessReduced: String = String.format("%.2f", easiness)
         get() = String.format("%.2f", easiness)
@@ -66,7 +65,7 @@ open class Card(
         if (answer.length in 2..6) help = answer.substring(0, 1)
         else if (answer.length > 7)
             for (c in answer)
-                if ((0 until 10).random() < 7) // 80% chance of showing a character
+                if ((0 until 10).random() < 5) // 50% chance of showing a character
                     help += c
                 else help += " "
     }

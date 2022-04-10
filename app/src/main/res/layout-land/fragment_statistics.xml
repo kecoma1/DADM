@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="10sp">
+            android:layout_marginTop="5sp">
 
             <TextView
                 android:id="@+id/num_decks"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="30sp"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="10sp"
             android:layout_below="@id/deck_stats"
             android:textSize="15sp"
             android:textColor="@color/black"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="10sp"
             android:layout_below="@id/decks_info"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -71,9 +71,9 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart"
-            android:layout_below="@id/pie_title"
             android:layout_width="match_parent"
-            android:layout_height="300sp" />
+            android:layout_height="300sp"
+            android:layout_below="@id/pie_title" />
 
     </RelativeLayout>
 

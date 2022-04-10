@@ -15,12 +15,52 @@
         <entry key="..\:/Users/kevin/AndroidStudioProjects/Cards/app/src/main/res/layout/fragment_blank.xml" value="0.12083333333333333" />
         <entry key="..\:/Users/kevin/AndroidStudioProjects/Cards/app/src/main/res/layout/fragment_study.xml" value="0.25" />
         <entry key="..\:/Users/kevin/AndroidStudioProjects/Cards/app/src/main/res/layout/fragment_title.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.185" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2375" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/drawable/ic_baseline_celebration_24.xml" value="0.185" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.185" />
         <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/drawable/layout_bg.xml" value="0.2095" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/drawable/layout_bg_dark.xml" value="0.2375" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/activity_study.xml" value="0.14947089947089948" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/activity_title.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_about.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_card_edit.xml" value="0.33" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_card_list.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_deck_edit.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_deck_list.xml" value="0.1875" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_statistics.xml" value="0.18" />
         <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_study.xml" value="0.2535273368606702" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/fragment_title.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/layout_item_deck.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-land/list_item_card.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/activity_title.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_about.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_card_edit.xml" value="0.33" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_card_list.xml" value="0.3875" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_deck_edit.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_deck_list.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_statistics.xml" value="0.23125" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_study.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/fragment_title.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/list_item_card.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/list_item_deck.xml" value="0.1875" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/nav_header.xml" value="0.29438405797101447" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout-night/nave_header.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/activity_study.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/activity_title.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_about.xml" value="0.17777777777777778" />
         <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_card_edit.xml" value="0.23278985507246377" />
-        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_deck_edit.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_card_list.xml" value="0.33" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_deck_edit.xml" value="0.18" />
         <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_deck_list.xml" value="0.20208333333333334" />
-        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_study.xml" value="0.33" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_statistics.xml" value="0.25" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_study.xml" value="0.26360808709175737" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/fragment_title.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/list_item_card.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/list_item_deck.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/layout/nav_header.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/menu-night/navdrawer_menu.xml" value="0.6857142857142857" />
+        <entry key="..\:/Users/kevin/Documents/GitHub/DADM/app/src/main/res/menu/navdrawer_menu.xml" value="0.2" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.248" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_assessment_24.xml" value="0.121" />

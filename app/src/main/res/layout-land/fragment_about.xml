@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AboutFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30sp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="@string/kevin" />
+
+        <TextView
+            android:id="@+id/kevin_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30sp"
+            android:layout_below="@id/name"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:text="@string/kevin_description" />
+
+        <TextView
+            android:id="@+id/app_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30sp"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
+            android:layout_below="@id/kevin_description"
+            android:textSize="20sp"
+            android:text="@string/app_description" />
+
+    </RelativeLayout>
+
+</layout>

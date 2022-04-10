@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:text="@{@string/easiness_list_item(card.easinessReduced)}"
+                android:text ="@{card.easinessReduced}"
                 android:visibility="@{card.detailsHidden ? View.INVISIBLE : View.VISIBLE}"
                 android:textAppearance="?attr/textAppearanceBody2"  />
 
@@ -76,7 +76,7 @@
                 android:layout_centerHorizontal="true"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:visibility="@{card.detailsHidden ? View.INVISIBLE : View.VISIBLE}"
-                android:text="@{@string/times_done(card.repetitions)}"
+                android:text ="@{Integer.toString(card.repetitions)}"
                 tools:ignore="RelativeOverlap" />
 
             <Button
@@ -89,7 +89,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:textSize="11sp"
-                tools:ignore="RelativeOverlap" />
+                tools:ignore="RelativeOverlap"/>
 
             <Button
                 android:id="@+id/hide_details"

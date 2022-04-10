@@ -8,21 +8,23 @@
     <string name="no_more_cards">No quedan más cartas por revisar</string>
     <string name="info_text_view_message">Número de cartas restantes</string>
     <string name="due_cards_format">Quedan %d cartas</string>
+    <!-- The analizer says it shoud be done like this, but it doesn't compile. Probably I'm not
+    doing it well.
+    <plurals name="due_cards_format">
+        <item quantity="one">Quedan %d cartas</item>
+        <item quantity="other">Quedan %d cartas</item>
+    </plurals> -->
     <string name="title_text">Tarjetas</string>
     <string name="subtitle_text">Pulsa para estudiar</string>
-    <string name="review_cards">Revisar cartas</string>
-    <string name="hello_blank_fragment">Hola blank fragment</string>
-    <string name="easiness_list_item">Facilidad</string>
-    <string name="repetitions_list_item">Veces hecha</string>
+    <string name="easiness_list_item">Facilidad %ld</string>
+    <string name="times_done">Veces hecha %d</string>
     <string name="question">Pregunta</string>
     <string name="answer">Respuesta</string>
     <string name="question_hint">Introduce la pregunta</string>
     <string name="answer_hint">Introduce la respuesta</string>
     <string name="accept">Aceptar</string>
-    <string name="save">Guardar</string>
     <string name="cancel">Cancelar</string>
     <string name="new_card_fab_description">Añadir carta</string>
-    <string name="added_card">¡Carta añadida!</string>
     <string name="decks_nav_menu_title">Mazos</string>
     <string name="study_nav_menu_title">Revisar cartas</string>
     <string name="statistics_nav_menu_title">Estadísticas</string>
@@ -38,4 +40,7 @@
     <string name="name_hint">Introduce el nombre</string>
     <string name="new_deck_fab_description">Añadir mazo</string>
     <string name="ask_for_values">Introduce valores en ambas, la pregunta y la respuesta</string>
+    <string name="drawer_desc">Imagen del encabezado</string>
+    <string name="number_cards">Cartas %d</string>
+    <string name="number_decks">Mazos %d</string>
 </resources>

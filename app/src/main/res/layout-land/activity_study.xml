@@ -1,106 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <import type="android.view.View"/>
-        <variable
-            name="viewModel"
-            type="es.uam.eps.dadm.cards.StudyViewModel" />
-    </data>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="@{viewModel.card != null ? View.VISIBLE : View.INVISIBLE}" >
+        android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/info_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/due_cards_format(viewModel.nDueCards)}"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15sp"
-            tools:text="@string/info_text_view_message" />
-
-        <TextView
-            android:id="@+id/question_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100sp"
-            android:text="@{viewModel.card.question}"
-            android:textSize="20sp"
-            tools:text="Question" />
-
-        <View
-            android:id="@+id/separator_view"
-            android:layout_below="@id/question_text_view"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/titleFragment"
+            android:name="es.uam.eps.dadm.cards.StudyFragment"
             android:layout_width="match_parent"
-            android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_height="1dp"
-            android:visibility="invisible"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/answer_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="20sp"
-            android:layout_below="@id/separator_view"
-            android:text="@{viewModel.card.answer}"
-            android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}"
-            tools:text="answer"/>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/answer_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/answer_text_view"
-            android:visibility="@{viewModel.card.answered ? View.INVISIBLE : View.VISIBLE}"
-            android:layout_marginTop="30dp"
-            android:text="@string/answer_button_text" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/answer_button"
-            android:layout_centerHorizontal="true"
-            android:text="@string/help" />
-
-        <LinearLayout
-            android:id="@+id/difficulty_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/hard_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hard"
-                android:layout_marginEnd="30sp"
-                android:backgroundTint="@color/red" />
-            <Button
-                android:id="@+id/medium_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/medium"
-                android:layout_marginEnd="30sp"
-                android:backgroundTint="@color/orange" />
-            <Button
-                android:id="@+id/easy_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/easy"
-                android:backgroundTint="@color/green" />
-        </LinearLayout>
-
-    </RelativeLayout>
 </layout>

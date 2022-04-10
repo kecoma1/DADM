@@ -20,10 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/layout_bg"
+            android:layout_marginTop="50sp"
+            android:background="@drawable/layout_bg_dark"
             android:text="@{@string/due_cards_format(viewModel.nDueCards)}"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             tools:text="@string/info_text_view_message" />
 
@@ -31,10 +31,10 @@
             android:id="@+id/question_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/info_text_view"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="15pt"
+            android:layout_below="@id/info_text_view"
+            android:layout_marginTop="40pt"
             android:text="@{viewModel.card.question}"
             android:textSize="20sp"
             tools:text="Question" />
@@ -66,7 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/answer_text_view"
-            android:layout_marginTop="18sp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/material_button_dark_background"
             android:text="@string/answer_button_text"
             android:visibility="@{viewModel.card.answered ? View.INVISIBLE : View.VISIBLE}" />
 
@@ -96,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="25sp"
+            android:layout_marginBottom="50sp"
             android:gravity="center"
             android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}">
 
@@ -113,6 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30sp"
                     android:text="@string/hard"
+                    android:backgroundTint="@color/material_button_dark_background"
                     android:textColor="@color/red" />
 
                 <Button
@@ -122,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30sp"
                     android:text="@string/medium"
+                    android:backgroundTint="@color/material_button_dark_background"
                     android:textColor="@color/orange" />
 
                 <Button
@@ -130,6 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/easy"
+                    android:backgroundTint="@color/material_button_dark_background"
                     android:textColor="@color/green" />
 
             </com.google.android.material.button.MaterialButtonToggleGroup>

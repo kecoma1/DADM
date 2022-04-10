@@ -26,6 +26,11 @@ class StatisticsFragment: Fragment() {
             false
         )
 
+        // Setting the fragment variables
+        binding.numberCards = CardsApplication.numberCards
+        binding.numberDecks = CardsApplication.numberDecks
+        binding.decksInfo.text = CardsApplication.decksInfo()
+
         // Setting the entries for the Pie chart
         val entries = mutableListOf<PieEntry>()
         entries.apply {

@@ -43,11 +43,11 @@ class StudyFragment : Fragment() {
         fadeAnimation(R.anim.fade_out, binding.separatorView)
 
         // If the help button was pressed, we show it again
-        if (binding.helpButton?.visibility == View.INVISIBLE) {
-            fadeAnimation(R.anim.fade_in, binding.helpButton!!)
+        if (binding.helpButton.visibility == View.INVISIBLE) {
+            fadeAnimation(R.anim.fade_in, binding.helpButton)
 
             // Help button visible again
-            binding.helpButton?.visibility = View.VISIBLE
+            binding.helpButton.visibility = View.VISIBLE
         }
 
         binding.invalidateAll()
@@ -88,6 +88,7 @@ class StudyFragment : Fragment() {
             false
         )
 
+        viewModel.updateCards()
         binding.viewModel = viewModel
 
         binding.apply {
@@ -100,24 +101,23 @@ class StudyFragment : Fragment() {
                 fadeAnimation(R.anim.fade_in, separatorView)
                 fadeAnimation(R.anim.fade_out, answerButton)
 
-                if (binding.helpButton?.visibility == View.INVISIBLE) {
-                    fadeAnimation(R.anim.fade_out, helpText!!)
-                    fadeAnimation(R.anim.fade_in, helpButton!!)
-                    binding.helpText?.visibility = View.INVISIBLE
-                    binding.helpButton?.visibility = View.VISIBLE
+                if (binding.helpButton.visibility == View.INVISIBLE) {
+                    fadeAnimation(R.anim.fade_out, helpText)
+                    fadeAnimation(R.anim.fade_in, helpButton)
+                    binding.helpText.visibility = View.INVISIBLE
+                    binding.helpButton.visibility = View.VISIBLE
                 }
                 invalidateAll()
             }
 
             // Listener for the help button
-            helpButton?.setOnClickListener {
-                if (!viewModel!!.card!!.answered) {
-                    binding.helpText?.visibility = View.VISIBLE
-                    binding.helpButton?.visibility = View.INVISIBLE
+            helpButton.setOnClickListener {
+                if (!viewModel?.card!!.answered) {
+                    binding.helpText.visibility = View.VISIBLE
+                    binding.helpButton.visibility = View.INVISIBLE
                     fadeAnimation(R.anim.fade_out, helpButton)
-                    fadeAnimation(R.anim.fade_in, binding.helpText!!)
+                    fadeAnimation(R.anim.fade_in, binding.helpText)
                 }
-
             }
 
             // Setting listeners for the difficulty buttons

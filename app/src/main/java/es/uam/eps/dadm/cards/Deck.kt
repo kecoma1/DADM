@@ -8,21 +8,14 @@ class Deck(
 ) {
     val cards = mutableListOf<Card>()
     var name : String = _name
+
+    /*
+    *
+    * ATTENTION:
+    * The code analyzer says that the next properties could be val instead of var. If we make
+    * this change, we have a big mistake because these values are going to be changed during
+    * the execution of the application.
+    */
     var nameReduced : String = ""
         get() = if (30 < name.length) name.substring(0, 27) + "..." else name
-    var numCards : Int = cards.size
-        get() = cards.size
-
-    fun addCard() {
-
-    }
-
-    fun deleteCard() {
-
-    }
-
-    private fun listCardsWithIndex() {
-        cards.withIndex().forEach { (i, card) ->
-            println("${i+1}. ${card.question} -> ${card.answer}") }
-    }
 }

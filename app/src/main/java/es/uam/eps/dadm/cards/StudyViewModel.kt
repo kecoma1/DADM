@@ -30,6 +30,12 @@ class StudyViewModel : ViewModel() {
         null
     }
 
+    fun updateCards() {
+        cards = CardsApplication.cards
+        card = randomCard()
+        _nDueCards.value = dueCards().size
+    }
+
     fun update(quality: Int) {
         when (quality) {
             5 -> easyQuestions++

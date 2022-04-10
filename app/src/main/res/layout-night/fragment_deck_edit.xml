@@ -1,0 +1,84 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="deck"
+            type="es.uam.eps.dadm.cards.Deck" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/deck_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="@{deck.name}" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deck_name"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="20sp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="@string/name" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="8sp"
+            android:layout_below="@id/name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_edit_text"
+                android:text="@{deck.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/card_edit_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_below="@id/name_input">
+
+            <Button
+                android:id="@+id/cancel_card_edit_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/material_button_dark_background"
+                android:textColor="@color/design_default_color_error"
+                android:text="@string/cancel" />
+
+            <Button
+                android:id="@+id/accept_card_edit_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/material_button_dark_background"
+                android:textColor="@color/teal_700"
+                android:text="@string/accept" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </RelativeLayout>
+</layout>

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import es.uam.eps.dadm.cards.databinding.ListItemCardBinding
 import es.uam.eps.dadm.cards.databinding.ListItemDeckBinding
 
 
