@@ -16,7 +16,7 @@
     </plurals> -->
     <string name="title_text">Tarjetas</string>
     <string name="subtitle_text">Pulsa para estudiar</string>
-    <string name="easiness_list_item">Facilidad %ld</string>
+    <string name="easiness_list_item">Facilidad %s</string>
     <string name="times_done">Veces hecha %d</string>
     <string name="question">Pregunta</string>
     <string name="answer">Respuesta</string>

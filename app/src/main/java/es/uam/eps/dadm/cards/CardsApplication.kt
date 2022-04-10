@@ -68,8 +68,8 @@ class CardsApplication : Application() {
             get() = decks.size
 
         fun getCard(id: String): Card? { return currentDeck?.cards!!.find { c -> c.id == id } }
-        fun addCard(card: Card) { currentDeck?.cards!!.add(card) }
-        fun delCard(card: Card) { currentDeck?.cards!!.remove(card) }
+        fun addCard(card: Card) { currentDeck?.cards!!.add(card); cards.add(card) }
+        fun delCard(card: Card) { currentDeck?.cards!!.remove(card); cards.remove(card) }
 
         // Deck functions
         fun getDeck(id: String): Deck? { return decks.find { d -> d.id == id } }

@@ -19,10 +19,7 @@ class StudyViewModel : ViewModel() {
         _nDueCards.value = dueCards().size
     }
 
-    private fun dueCards(): List<Card> {
-        val currentDate = LocalDateTime.now()
-        return cards.filter { c -> c.isDue(currentDate) }
-    }
+    private fun dueCards(): List<Card> { return cards.filter { c -> c.isDue() } }
 
     private fun randomCard() =  try {
         dueCards().random()
