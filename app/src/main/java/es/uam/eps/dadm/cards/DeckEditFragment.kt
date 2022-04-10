@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
-import es.uam.eps.dadm.cards.databinding.FragmentCardEditBinding
 import es.uam.eps.dadm.cards.databinding.FragmentDeckEditBinding
 
 class DeckEditFragment : Fragment() {
@@ -30,6 +29,7 @@ class DeckEditFragment : Fragment() {
             false
         )
 
+        // Loading the deck to edit
         val args = DeckEditFragmentArgs.fromBundle(requireArguments())
         deck = CardsApplication.getDeck(args.deckId) ?: throw Exception("Wrong id")
         binding.deck = deck
@@ -41,6 +41,7 @@ class DeckEditFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        // Text watcher for the name of the deck
         val nameTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
@@ -49,27 +50,39 @@ class DeckEditFragment : Fragment() {
                 deck.name = s.toString()
             }
         }
-
         binding.nameEditText.addTextChangedListener(nameTextWatcher)
 
+        // Lambda to go back to the deck list
         val goToDeckListFragment = { view: View ->
             view.findNavController()
                 .navigate(DeckEditFragmentDirections
                     .actionDeckEditFragmentToDeckListFragment())
         }
 
+        // Lambda to restore the name of the deck in case there's no change
         val restore = { deck.name = name }
 
+        // Accept button on click listener
         binding.acceptCardEditButton.setOnClickListener {
             if (deck.name.isEmpty())
                 Snackbar.make(it, resources.getString(R.string.ask_for_values), Snackbar.LENGTH_LONG).show()
             else goToDeckListFragment(it)
         }
+
+        // Cancel button on click listener
         binding.cancelCardEditButton.setOnClickListener {
             if (deck.name.isEmpty())
                 CardsApplication.delDeck(deck)
             restore()
             goToDeckListFragment(it)
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        // When back is pressed instead of "cancel"
+        if (deck.name.isEmpty())
+            CardsApplication.delDeck(deck)
     }
 }

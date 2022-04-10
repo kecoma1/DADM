@@ -23,7 +23,11 @@
 
         <action
             android:id="@+id/action_titleFragment_to_deckListFragment"
-            app:destination="@id/deckListFragment" />
+            app:destination="@id/deckListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -33,8 +37,13 @@
         tools:layout="@layout/fragment_card_list" >
         <action
             android:id="@+id/action_cardListFragment_to_cardEditFragment"
-            app:destination="@id/cardEditFragment" />
-        <argument android:name="deckId"
+            app:destination="@id/cardEditFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+        <argument
+            android:name="deckId"
             app:argType="string" />
     </fragment>
 
@@ -47,7 +56,11 @@
             android:id="@+id/action_cardEditFragment_to_cardListFragment"
             app:destination="@id/cardListFragment"
             app:popUpTo="@id/cardListFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
         <argument
             android:name="cardId"
             app:argType="string" />
@@ -72,10 +85,18 @@
             android:id="@+id/action_deckListFragment_to_cardListFragment"
             app:destination="@id/cardListFragment"
             app:popUpToInclusive="true"
-            app:popUpTo="@id/cardListFragment" />
+            app:popUpTo="@id/cardListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_deckListFragment_to_deckEditFragment"
-            app:destination="@id/deckEditFragment" />
+            app:destination="@id/deckEditFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/deckEditFragment"
@@ -86,7 +107,11 @@
             android:id="@+id/action_deckEditFragment_to_deckListFragment"
             app:destination="@id/deckListFragment"
             app:popUpTo="@id/deckEditFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <argument
             android:name="deckId"
             app:argType="string" />

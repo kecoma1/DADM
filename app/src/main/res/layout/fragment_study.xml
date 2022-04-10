@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50sp"
+            android:background="@drawable/layout_bg"
             android:text="@{@string/due_cards_format(viewModel.nDueCards)}"
+            android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="@string/info_text_view_message" />
 
@@ -60,6 +62,7 @@
 
         <Button
             android:id="@+id/answer_button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/answer_text_view"
@@ -67,7 +70,21 @@
             android:text="@string/answer_button_text"
             android:visibility="@{viewModel.card.answered ? View.INVISIBLE : View.VISIBLE}" />
 
+        <TextView
+            android:id="@+id/help_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_below="@id/answer_button"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:layout_marginTop="20sp"
+            android:text="@{viewModel.card.help}"
+            android:visibility="@{View.INVISIBLE}" />
+
         <Button
+            android:id="@+id/help_button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/answer_button"
@@ -83,31 +100,41 @@
             android:gravity="center"
             android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}">
 
-            <Button
-                android:id="@+id/hard_button"
-                android:layout_width="wrap_content"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/card_edit_buttons"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30sp"
-                android:backgroundTint="@color/red"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:text="@string/hard" />
+                android:gravity="center">
 
-            <Button
-                android:id="@+id/medium_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30sp"
-                android:backgroundTint="@color/orange"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:text="@string/medium" />
+                <Button
+                    android:id="@+id/hard_button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30sp"
+                    android:text="@string/hard"
+                    android:textColor="@color/red" />
 
-            <Button
-                android:id="@+id/easy_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:text="@string/easy" />
+                <Button
+                    android:id="@+id/medium_button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30sp"
+                    android:text="@string/medium"
+                    android:textColor="@color/orange" />
+
+                <Button
+                    android:id="@+id/easy_button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/easy"
+                    android:textColor="@color/green" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
         </LinearLayout>
 
     </RelativeLayout>

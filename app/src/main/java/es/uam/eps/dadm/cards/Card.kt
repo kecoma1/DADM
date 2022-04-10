@@ -32,6 +32,13 @@ open class Card(
     private var timesDone: Int = 0
     private var successes: Int = 0
 
+    /*
+    *
+    * ATTENTION:
+    * The code analizer says that the next properties could be val instead of var. If we make
+    * this change, we have a big mistake because these values are going to be changed during
+    * the execution of the application.
+    */
     // For displaying
     var answerReduced: String = ""
         get() = if (12 < answer.length) answer.substring(0, 11) + "..."
@@ -47,13 +54,24 @@ open class Card(
                 else question
     var easinessReduced: String = String.format("%.2f", easiness)
         get() = String.format("%.2f", easiness)
+
+    // Flag to check whether or not the details of a card are hidden.
     var detailsHidden: Boolean = true
 
     var answer: String = _answer
     var question: String = _question
+    var help: String = ""
+
+    init {
+        if (answer.length in 2..6) help = answer.substring(0, 1)
+        else if (answer.length > 7)
+            for (c in answer)
+                if ((0 until 10).random() < 7) // 80% chance of showing a character
+                    help += c
+                else help += " "
+    }
 
     fun isDue(): Boolean { return isDue(LocalDateTime.now()) }
-
     fun isDue(date: LocalDateTime): Boolean {
         val cardDate = LocalDate.parse(this.nextPracticeDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay()
         return cardDate.isBefore(date) || cardDate.isEqual(date)

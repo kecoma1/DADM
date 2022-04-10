@@ -26,6 +26,7 @@ class StatisticsFragment: Fragment() {
             false
         )
 
+        // Setting the entries for the Pie chart
         val entries = mutableListOf<PieEntry>()
         entries.apply {
             add(PieEntry(StudyViewModel.easyQuestions.toFloat(), resources.getString(R.string.easy)))
@@ -33,18 +34,17 @@ class StatisticsFragment: Fragment() {
             add(PieEntry(StudyViewModel.hardQuestions.toFloat(), resources.getString(R.string.hard)))
         }
 
+        // Setting the colors
         val colors = mutableListOf<Int>()
         for (i in 0..2) colors.add(ColorTemplate.MATERIAL_COLORS[i])
 
+        // Setting the data and plotting
         val dataset = PieDataSet(entries, resources.getString(R.string.difficulty_pie_title))
         dataset.colors = colors
-
         val data = PieData(dataset)
         data.setDrawValues(true)
         data.setValueTextSize(12f)
-
         binding.chart.data = data
-
         binding.chart.invalidate()
 
         return binding.root

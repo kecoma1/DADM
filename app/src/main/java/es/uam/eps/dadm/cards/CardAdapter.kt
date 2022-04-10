@@ -20,12 +20,13 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
         fun bind(card: Card, position: Int) {
             local.card = card
 
-
+            // Listener for the card it self
             itemView.setOnClickListener {
                 it.findNavController()
                     .navigate(CardListFragmentDirections.actionCardListFragmentToCardEditFragment(card.id))
             }
 
+            // Lambda for hiding additional data.
             val hideUnHide = {
                 val visibility = if (local.repetitions.visibility == View.VISIBLE) View.INVISIBLE
                 else View.VISIBLE
