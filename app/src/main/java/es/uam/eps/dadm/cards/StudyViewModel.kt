@@ -31,6 +31,12 @@ class StudyViewModel : ViewModel() {
     }
 
     fun update(quality: Int) {
+        when (quality) {
+            5 -> easyQuestions++
+            3 -> mediumQuestions++
+            else -> hardQuestions++
+        }
+
         card?.updateCard(quality)
         card = randomCard()
 
@@ -40,5 +46,11 @@ class StudyViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         Timber.i("StudyViewModel destroyed")
+    }
+
+    companion object {
+        var hardQuestions: Int = 0
+        var mediumQuestions: Int = 0
+        var easyQuestions: Int = 0
     }
 }

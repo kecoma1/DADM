@@ -15,17 +15,42 @@
         <entry key="..\:/Users/kevin/AndroidStudioProjects/Cards/app/src/main/res/layout/fragment_blank.xml" value="0.12083333333333333" />
         <entry key="..\:/Users/kevin/AndroidStudioProjects/Cards/app/src/main/res/layout/fragment_study.xml" value="0.25" />
         <entry key="..\:/Users/kevin/AndroidStudioProjects/Cards/app/src/main/res/layout/fragment_title.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.248" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.248" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_assessment_24.xml" value="0.121" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.248" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_list_alt_24.xml" value="0.121" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.121" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_play_circle_filled_24.xml" value="0.121" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_baseline_post_add_24.xml" value="0.248" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/kevin.xml" value="0.121" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/drawable/nav_header1.xml" value="0.1315" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout-land/activity_study.xml" value="0.1" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout-land/fragment_card_list.xml" value="0.21164021164021163" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout-land/fragment_study.xml" value="0.13800705467372135" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout-night/activity_title.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout-night/fragment_study.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout-night/fragment_title.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/about_fragment.xml" value="0.25" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/activity_study.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/activity_title.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_about.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_card_edit.xml" value="0.2747395833333333" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_card_list.xml" value="0.25" />
-        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_study.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_deck_list.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_decks.xml" value="0.25" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_edit_deck.xml" value="0.25" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_select_deck.xml" value="0.25" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_statistics.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_study.xml" value="0.264" />
         <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/fragment_title.xml" value="0.25" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/list_item_card.xml" value="0.2747395833333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/list_item_deck.xml" value="0.25" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/layout/nav_header.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/menu/navdrawer_menu.xml" value="0.1" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
+        <entry key="..\:/Users/kevin/OneDrive/Documentos/GitHub/DADM/Cards/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.121" />
       </map>
     </option>
   </component>

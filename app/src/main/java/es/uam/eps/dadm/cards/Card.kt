@@ -1,6 +1,5 @@
 package es.uam.eps.dadm.cards
 
-import android.view.View
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -9,11 +8,10 @@ import kotlin.math.max
 import kotlin.math.roundToLong
 
 open class Card(
-    var question: String,
-    var answer: String,
-    var date: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString(),
-    var id: String = UUID.randomUUID().toString(),
-    var extraQuality: Boolean = false
+    _question: String,
+    _answer: String,
+    private var date: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString(),
+    var id: String = UUID.randomUUID().toString()
 ) {
     private var quality: Int? = null
     private val qualityOpt = mutableListOf(0, 3, 5)
@@ -22,25 +20,37 @@ open class Card(
 
     // For the SM2 algorithm
     var repetitions: Int = 0
-    var interval: Long = 1L
+    private var interval: Long = 1L
     var nextPracticeDate = date
-    var easiness: Double = 2.5
+    private var easiness: Double = 2.5
+        set(value) {
+            easinessReduced = String.format("%.2f", value)
+            field = value
+        }
 
     // For statistics
-    var timesDone: Int = 0
-    var sucesses: Int = 0
+    private var timesDone: Int = 0
+    private var successes: Int = 0
 
-    init { if (extraQuality) qualityOpt.apply { add(1); add(4) } }
+    // For displaying
+    var answerReduced: String = ""
+        get() = if (12 < answer.length) answer.substring(0, 11) + "..."
+                else answer
+    var answerLongReduced: String = ""
+        get() = if (30 < answer.length) answer.substring(0, 27) + "..."
+                else answer
+    var questionReduced: String = ""
+        get() = if (12 < question.length) question.substring(0, 11) + "..."
+                else question
+    var questionLongReduced: String = ""
+        get() = if (30 < question.length) question.substring(0, 27) + "..."
+                else question
+    var easinessReduced: String = String.format("%.2f", easiness)
+        get() = String.format("%.2f", easiness)
+    var detailsHidden: Boolean = true
 
-    fun updateFromView(view: View) {
-        quality = when(view.id) {
-            R.id.easy_button -> 5
-            R.id.medium_button -> 3
-            R.id.hard_button -> 0
-            else -> throw Exception("Unavailable quality")
-        }
-        update(LocalDateTime.now())
-    }
+    var answer: String = _answer
+    var question: String = _question
 
     fun isDue(): Boolean { return isDue(LocalDateTime.now()) }
 
@@ -59,58 +69,7 @@ open class Card(
             " $interval |" +
             " $nextPracticeDate |" +
             " $timesDone |" +
-            " $sucesses "
-
-    companion object {
-        fun fromString(cad: String): Card {
-            // Removing the first and last space
-            val parts = cad.split("|").map { it.substring(1, it.length-1) }
-
-            val c: Card = when {
-                parts[0].contains("cloze") -> Cloze(parts[1], parts[2])
-                parts[0].contains("card") -> Card(parts[1], parts[2])
-                parts[0].contains("sinonim") -> Sinonim(parts[1], parts[2])
-                else -> throw Exception("Not a card nor a cloze nor a sinonim")
-            }
-
-            c.date = parts[3]
-            c.id = parts[4]
-            c.easiness = parts[5].toDouble()
-            c.repetitions = parts[6].toInt()
-            c.interval = parts[7].toLong()
-            c.nextPracticeDate = parts[8]
-            c.timesDone = parts[9].toInt()
-            c.sucesses = parts[10].toInt()
-            return c
-        }
-    }
-
-    open fun show() {
-        print("$question (ENTER to see the answer): ")
-        val input = readLine() ?: ""
-        println("Answer: $answer")
-
-        updateStats(input)
-    }
-
-    fun updateStats(input: String) {
-        timesDone++
-        if (input == answer) sucesses++
-    }
-
-    private fun askQuality() {
-        // Asking the quality
-        do {
-            print("How was the question?:\n" +
-                    "\t0 -> Difficult\n" +
-                    (if (extraQuality) "\t1 -> Difficult, but not much\n" else "") +
-                    "\t3 -> Doubt\n" +
-                    (if (extraQuality) "\t4 -> Easy, but not much\n" else "") +
-                    "\t5 -> Easy\n" +
-                    if (extraQuality) "Type 0, 1, 3, 4 or 5: " else "Type 0, 3 or 5: " )
-            quality = readLine()?.toIntOrNull()
-        } while(quality == null || !qualityOpt.contains(quality))
-    }
+            " $successes "
 
     fun updateCard(quality: Int) {
         this.quality = quality
@@ -141,46 +100,5 @@ open class Card(
         val f = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         nextPracticeDate = currentDate.plusDays(interval).format(f)
     }
-
-    fun simulate(period: Long) {
-        println("Simulation of the card $question:")
-        var now = LocalDateTime.now()
-
-        val f = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        var intervalStr = ""
-
-        var counter = 0
-        do {
-            val nowStr = now.format(f)
-            println(nowStr)
-
-            intervalStr += if (nowStr == nextPracticeDate) {
-                show()
-                update(now)
-                details()
-                "*\t"
-            } else "\t"
-
-            now = now.plusDays(1)
-            counter += 1
-        } while(counter <= period)
-
-        for(i in 1..period) print("$i\t")
-        println("\n$intervalStr")
-    }
-
-    private fun details() = println(String.format("Easiness: %.2f - " +
-            "Repetitions: $repetitions - " +
-            "Interval: $interval - " +
-            "Next date: $nextPracticeDate - " +
-            "Times answered: $timesDone - " +
-            "Right answers: $sucesses", easiness))
-
-    open fun summary() = "(Card)\t$question -> $answer " +
-            "- Times done: $timesDone " +
-            "- Successes: ${"%.2f".format(
-                if (timesDone > 0) ((sucesses*100)/timesDone).toDouble()
-                else 0.0)
-            }% ($sucesses)"
 
 }

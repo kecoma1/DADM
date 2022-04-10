@@ -1,0 +1,107 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="card"
+            type="es.uam.eps.dadm.cards.Card" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardBackgroundColor="@color/cardview_light_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingTop="10dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/list_item_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textSize="16sp"
+                android:text="@{card.detailsHidden ? (12 > card.question.length() ? card.question : (30 > card.question.length() ?  card.question : card.questionLongReduced)) : 12 > card.question.length() ?  card.question : card.questionReduced }"
+                android:textStyle="bold"
+                tools:ignore="RelativeOverlap"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+            <TextView
+                android:id="@+id/list_item_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@{card.detailsHidden ? (12 > card.answer.length() ? card.answer : (30 > card.answer.length() ?  card.answer : card.answerLongReduced)) : 12 > card.answer.length() ?  card.answer : card.answerReduced }"
+                android:textSize="16sp"
+                android:textAppearance="?attr/textAppearanceBody2" />
+
+            <TextView
+                android:id="@+id/easiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text ="@{card.easinessReduced}"
+                android:visibility="@{card.detailsHidden ? View.INVISIBLE : View.VISIBLE}"
+                android:textAppearance="?attr/textAppearanceBody2"  />
+
+            <TextView
+                android:id="@+id/list_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@{card.nextPracticeDate}"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="@{card.detailsHidden ? View.INVISIBLE : View.VISIBLE}"
+                android:textAppearance="?attr/textAppearanceBody2" />
+
+            <TextView
+                android:id="@+id/repetitions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:visibility="@{card.detailsHidden ? View.INVISIBLE : View.VISIBLE}"
+                android:text ="@{Integer.toString(card.repetitions)}"
+                tools:ignore="RelativeOverlap" />
+
+            <Button
+                android:id="@+id/delete_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="34sp"
+                android:text="@string/delete"
+                android:textColor="@color/design_default_color_error"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/hide_details"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="34sp"
+                android:layout_below="@+id/delete_button"
+                android:layout_alignParentEnd="true"
+                android:text="@{card.detailsHidden ? @string/show : @string/hide}"
+                android:textColor="@color/purple_500"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

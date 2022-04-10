@@ -10,9 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import es.uam.eps.dadm.cards.databinding.ActivityStudyBinding
 import es.uam.eps.dadm.cards.databinding.FragmentStudyBinding
-import es.uam.eps.dadm.cards.databinding.FragmentTitleBinding
 import timber.log.Timber
 
 
@@ -30,9 +28,9 @@ class StudyFragment : Fragment() {
         // Assign quality's value from v
         // depending on the button clicked
         val quality = when (v?.id) {
-            binding.easyButton?.id -> 5
-            binding.mediumButton?.id -> 3
-            binding.hardButton?.id -> 0
+            binding.easyButton.id -> 5
+            binding.mediumButton.id -> 3
+            binding.hardButton.id -> 0
             else -> 5
         }
 
@@ -40,8 +38,9 @@ class StudyFragment : Fragment() {
         if (viewModel.card == null)
             Toast.makeText(activity, R.string.no_more_cards, Toast.LENGTH_LONG).show()
 
-        fadeAnimation(R.anim.fade_in, binding.answerButton!!)
-        fadeAnimation(R.anim.fade_out, binding.difficultyButtons!!)
+        fadeAnimation(R.anim.fade_in, binding.answerButton)
+        fadeAnimation(R.anim.fade_out, binding.difficultyButtons)
+        fadeAnimation(R.anim.fade_out, binding.separatorView)
         binding.invalidateAll()
     }
 
@@ -71,9 +70,9 @@ class StudyFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-         binding = DataBindingUtil.inflate<FragmentStudyBinding>(
+         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_study,
             container,
@@ -82,25 +81,21 @@ class StudyFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.viewModel = viewModel
-        Timber.i("$viewModel")
-
         binding.apply {
             // Listener for the answer button
-            answerButton?.setOnClickListener {
+            answerButton.setOnClickListener {
                 viewModel?.card?.answered = true
                 // Animations
-                fadeAnimation(R.anim.fade_in, answerTextView!!)
-                fadeAnimation(R.anim.fade_in, easyButton!!)
-                fadeAnimation(R.anim.fade_in, mediumButton!!)
-                fadeAnimation(R.anim.fade_in, hardButton!!)
+                fadeAnimation(R.anim.fade_in, answerTextView)
+                fadeAnimation(R.anim.fade_in, difficultyButtons)
+                fadeAnimation(R.anim.fade_in, separatorView)
                 fadeAnimation(R.anim.fade_out, answerButton)
                 invalidateAll()
             }
 
-            easyButton?.setOnClickListener(listener)
-            mediumButton?.setOnClickListener(listener)
-            hardButton?.setOnClickListener(listener)
+            easyButton.setOnClickListener(listener)
+            mediumButton.setOnClickListener(listener)
+            hardButton.setOnClickListener(listener)
         }
         Timber.i("onCreate called")
 

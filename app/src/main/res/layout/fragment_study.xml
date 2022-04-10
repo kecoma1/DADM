@@ -30,7 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="120pt"
+            android:layout_marginHorizontal="30dp"
+            android:layout_below="@id/info_text_view"
+            android:layout_marginTop="40pt"
             android:text="@{viewModel.card.question}"
             android:textSize="20sp"
             tools:text="Question" />
@@ -43,7 +45,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginVertical="10dp"
             android:background="@android:color/darker_gray"
-            android:visibility="invisible" />
+            android:visibility="@{viewModel.card.answered ? View.VISIBLE : View.INVISIBLE}" />
 
         <TextView
             android:id="@+id/answer_text_view"
@@ -87,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30sp"
                 android:backgroundTint="@color/red"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:text="@string/hard" />
 
             <Button
@@ -95,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30sp"
                 android:backgroundTint="@color/orange"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:text="@string/medium" />
 
             <Button
@@ -102,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/green"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:text="@string/easy" />
         </LinearLayout>
 

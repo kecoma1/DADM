@@ -9,7 +9,34 @@
     <string name="due_cards_format">%d cards left</string>
     <string name="title_text">Cards</string>
     <string name="subtitle_text">Tap to study</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="review_cards">Review Cards</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="easiness_list_item">Easiness</string>
+    <string name="repetitions_list_item">Times done</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+    <string name="question_hint">Introduce the question</string>
+    <string name="answer_hint">Introduce the answer</string>
+    <string name="accept">Accept</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_card_fab_description">Add card</string>
+    <string name="added_card">Card Added!</string>
+    <string name="decks_nav_menu_title">Decks</string>
+    <string name="study_nav_menu_title">Review cards</string>
+    <string name="statistics_nav_menu_title">Statistics</string>
+    <string name="about">About</string>
+    <string name="difficulty_pie_title">Difficulty</string>
+    <string name="delete">Delete</string>
+    <string name="hide">Hide</string>
+    <string name="kevin" translatable="false">Kevin de la Coba Malam</string>
+    <string name="kevin_description">Group: 2391 - Course 2021/2022</string>
+    <string name="app_description">This is the cards App! Here you will be able to create decks, add cards and review them. Enjoy your learning!</string>
+    <string name="show">Show</string>
+    <string name="etc" translatable="false">%s...</string>
+    <string name="edit">Edit</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Introduce the name</string>
+    <string name="new_deck_fab_description">Add deck</string>
+    <string name="ask_for_values">Introduce values in both, the question and the answer</string>
 </resources>
