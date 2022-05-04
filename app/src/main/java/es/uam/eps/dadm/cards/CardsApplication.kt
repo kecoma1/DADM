@@ -9,6 +9,8 @@ class CardsApplication : Application() {
         val japanese = Deck("Japanese")
         val quotes = Deck("Quotes")
 
+        // 
+
         // Adding cards
         japanese.cards.apply {
             add(Card("か", "ka"))

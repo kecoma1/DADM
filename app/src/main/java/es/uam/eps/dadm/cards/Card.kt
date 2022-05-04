@@ -1,16 +1,22 @@
 package es.uam.eps.dadm.cards
 
+import androidx.room.ColumnInfo
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.math.max
 import kotlin.math.roundToLong
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "cards_table")
 open class Card(
-    _question: String,
-    _answer: String,
-    private var date: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString(),
+    @ColumnInfo(name="card_question")
+    var question: String,
+    var answer: String,
+    var date: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString(),
+    @PrimaryKey
     var id: String = UUID.randomUUID().toString()
 ) {
     private var quality: Int? = null
@@ -32,7 +38,6 @@ open class Card(
     private var successes: Int = 0
 
     /*
-    *
     * ATTENTION:
     * The code analyzer says that the next properties could be val instead of var. If we make
     * this change, we have a big mistake because these values are going to be changed during
@@ -56,9 +61,6 @@ open class Card(
 
     // Flag to check whether or not the details of a card are hidden.
     var detailsHidden: Boolean = true
-
-    var answer: String = _answer
-    var question: String = _question
     var help: String = ""
 
     init {
@@ -71,7 +73,7 @@ open class Card(
     }
 
     fun isDue(): Boolean { return isDue(LocalDateTime.now()) }
-    fun isDue(date: LocalDateTime): Boolean {
+    private fun isDue(date: LocalDateTime): Boolean {
         val cardDate = LocalDate.parse(this.nextPracticeDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay()
         return cardDate.isBefore(date) || cardDate.isEqual(date)
     }
