@@ -1,13 +1,16 @@
 package es.uam.eps.dadm.cards
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity(tableName = "decks_table")
 class Deck(
-    _name: String,
-    var id: String = UUID.randomUUID().toString()
+    var id: String = UUID.randomUUID().toString(),
+    @PrimaryKey val deckId: Long,
+    var name: String
 ) {
-    val cards = mutableListOf<Card>()
-    var name : String = _name
+    init { lastDeckId = deckId }
 
     /*
     *
@@ -18,4 +21,8 @@ class Deck(
     */
     var nameReduced : String = ""
         get() = if (30 < name.length) name.substring(0, 27) + "..." else name
+
+    companion object {
+        var lastDeckId : Long = 0
+    }
 }

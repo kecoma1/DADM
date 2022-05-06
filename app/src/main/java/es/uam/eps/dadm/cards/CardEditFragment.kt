@@ -8,15 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentCardEditBinding
+import java.util.concurrent.Executors
 
 class CardEditFragment : Fragment() {
     lateinit var binding: FragmentCardEditBinding
     lateinit var card: Card
     lateinit var question: String
     lateinit var answer: String
+
+    private val executor = Executors.newSingleThreadExecutor()
+
+    private val viewModel by lazy {
+        ViewModelProvider(this).get(CardEditViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +40,13 @@ class CardEditFragment : Fragment() {
         )
 
         val args = CardEditFragmentArgs.fromBundle(requireArguments())
-        card = CardsApplication.getCard(args.cardId) ?: throw Exception("Wrong id")
-        binding.card = card
-        question = card.question
-        answer = card.answer
+        viewModel.loadCardId(args.cardId)
+        viewModel.card.observe(viewLifecycleOwner) {
+            card = it
+            binding.card = card
+            question = card.question
+            answer = card.answer
+        }
 
         return binding.root
     }
@@ -58,7 +70,6 @@ class CardEditFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 card.answer = s.toString()
             }
-
         }
 
         binding.questionEditText.addTextChangedListener(questionTextWatcher)
@@ -68,7 +79,7 @@ class CardEditFragment : Fragment() {
             view.findNavController()
                 .navigate(CardEditFragmentDirections
                     .actionCardEditFragmentToCardListFragment(CardsApplication
-                        .currentDeck!!.id))
+                        .currentDeck!!.deckId))
         }
 
         val restore = {
@@ -80,11 +91,20 @@ class CardEditFragment : Fragment() {
             if (card.question.isEmpty() || card.answer.isEmpty())
                 Snackbar.make(it, resources.getString(R.string.ask_for_values), Snackbar.LENGTH_LONG).show()
             else goToCardListFragment(it)
+
+            // Updating the card
+            executor.execute {
+                CardDatabase.getInstance(this.requireContext()).cardDao.updateCard(card)
+            }
         }
+
         binding.cancelCardEditButton.setOnClickListener {
             if (card.question.isEmpty() || card.answer.isEmpty())
-                CardsApplication.delCard(card)
+                executor.execute {
+                    CardDatabase.getInstance(this.requireContext()).cardDao.deleteCard(card)
+                }
             restore()
-            goToCardListFragment(it) }
+            goToCardListFragment(it)
+        }
     }
 }

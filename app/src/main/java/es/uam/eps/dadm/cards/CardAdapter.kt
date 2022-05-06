@@ -1,11 +1,13 @@
 package es.uam.eps.dadm.cards
 
 
+import android.app.Application
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.ListItemCardBinding
 
 
@@ -37,7 +39,7 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
             }
 
             local.deleteButton.setOnClickListener {
-                CardsApplication.delCard(card)
+                // TODO: Delete not working
                 notifyItemRemoved(position)
                 notifyItemRangeChanged(position, data.size)
             }

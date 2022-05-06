@@ -7,12 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.snackbar.Snackbar
 import es.uam.eps.dadm.cards.databinding.FragmentStatisticsBinding
 
 
 class StatisticsFragment: Fragment() {
+
+    private val viewModel: StatisticViewModel by lazy {
+        ViewModelProvider(this).get(StatisticViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,10 +32,16 @@ class StatisticsFragment: Fragment() {
             false
         )
 
+        viewModel.decks.observe(viewLifecycleOwner) {
+            var message = String()
+            for (deck in it)
+                message += "The deck named ${deck.deck.name} has ${deck.cards.size} cards\n"
+            Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
+        }
+
         // Setting the fragment variables
-        binding.numberCards = CardsApplication.numberCards
+        binding.viewModel = viewModel
         binding.numberDecks = CardsApplication.numberDecks
-        binding.decksInfo.text = CardsApplication.decksInfo()
 
         // Setting the entries for the Pie chart
         val entries = mutableListOf<PieEntry>()

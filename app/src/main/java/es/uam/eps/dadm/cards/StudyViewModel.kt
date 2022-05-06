@@ -1,36 +1,29 @@
 package es.uam.eps.dadm.cards
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import es.uam.eps.dadm.cards.database.CardDatabase
 import timber.log.Timber
 import java.time.LocalDateTime
+import java.util.concurrent.Executors
 
-class StudyViewModel : ViewModel() {
+class StudyViewModel(application: Application) : AndroidViewModel(application) {
+    private val executor = Executors.newSingleThreadExecutor()
+    private val context = getApplication<Application>().applicationContext
     var card: Card? = null
-    private var cards: MutableList<Card> = CardsApplication.cards
+    var cards: LiveData<List<Card>> = CardDatabase.getInstance(context).cardDao.getCards()
+
+    var dueCard: LiveData<Card?> = Transformations.map(cards) {
+        try {
+            it.filter {
+               c -> c.isDue()
+            }.random()
+        } catch (e: Exception) { null }
+    }
 
     private var _nDueCards = MutableLiveData<Int>()
-    val nDueCards: LiveData<Int>
-        get() = _nDueCards
-
-    init {
-        card = randomCard()
-        _nDueCards.value = dueCards().size
-    }
-
-    private fun dueCards(): List<Card> { return cards.filter { c -> c.isDue() } }
-
-    private fun randomCard() =  try {
-        dueCards().random()
-    } catch (e: NoSuchElementException) {
-        null
-    }
-
-    fun updateCards() {
-        cards = CardsApplication.cards
-        card = randomCard()
-        _nDueCards.value = dueCards().size
+    var nDueCards: LiveData<Int> = Transformations.map(cards) {
+        it.filter { c -> c.isDue() }.size
     }
 
     fun update(quality: Int) {
@@ -40,10 +33,12 @@ class StudyViewModel : ViewModel() {
             else -> hardQuestions++
         }
 
-        card?.updateCard(quality)
-        card = randomCard()
-
         _nDueCards.value = nDueCards.value?.minus(1)
+
+        card?.updateCard(quality)
+        executor.execute {
+            CardDatabase.getInstance(context).cardDao.updateCard(card!!)
+        }
     }
 
     override fun onCleared() {

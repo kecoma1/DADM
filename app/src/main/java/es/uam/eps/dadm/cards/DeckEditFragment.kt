@@ -8,14 +8,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentDeckEditBinding
+import java.util.concurrent.Executors
 
 class DeckEditFragment : Fragment() {
     lateinit var binding: FragmentDeckEditBinding
     lateinit var deck: Deck
     lateinit var name: String
+
+    private val executor = Executors.newSingleThreadExecutor()
+
+    private val viewModel by lazy {
+        ViewModelProvider(this).get(DeckEditViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,9 +40,11 @@ class DeckEditFragment : Fragment() {
 
         // Loading the deck to edit
         val args = DeckEditFragmentArgs.fromBundle(requireArguments())
-        deck = CardsApplication.getDeck(args.deckId) ?: throw Exception("Wrong id")
-        binding.deck = deck
-        name = deck.name
+        viewModel.loadDeckId(args.deckId)
+        viewModel.deck.observe(viewLifecycleOwner) {
+            deck = it[0].deck
+            binding.deck = deck
+        }
 
         return binding.root
     }
@@ -63,16 +74,23 @@ class DeckEditFragment : Fragment() {
         val restore = { deck.name = name }
 
         // Accept button on click listener
-        binding.acceptCardEditButton.setOnClickListener {
+        binding.acceptDeckEditButton.setOnClickListener {
+            executor.execute {
+                CardDatabase.getInstance(this.requireContext()).cardDao.updateDeck(deck)
+            }
+
             if (deck.name.isEmpty())
                 Snackbar.make(it, resources.getString(R.string.ask_for_values), Snackbar.LENGTH_LONG).show()
             else goToDeckListFragment(it)
         }
 
         // Cancel button on click listener
-        binding.cancelCardEditButton.setOnClickListener {
+        binding.cancelDeckEditButton.setOnClickListener {
+
             if (deck.name.isEmpty())
-                CardsApplication.delDeck(deck)
+                executor.execute {
+                    CardDatabase.getInstance(this.requireContext()).cardDao.delDeck(deck)
+                }
             restore()
             goToDeckListFragment(it)
         }
@@ -83,6 +101,8 @@ class DeckEditFragment : Fragment() {
 
         // When back is pressed instead of "cancel"
         if (deck.name.isEmpty())
-            CardsApplication.delDeck(deck)
+            executor.execute {
+                CardDatabase.getInstance(this.requireContext()).cardDao.delDeck(deck)
+            }
     }
 }

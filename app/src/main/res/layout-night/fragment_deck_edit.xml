@@ -61,7 +61,7 @@
             android:layout_below="@id/name_input">
 
             <Button
-                android:id="@+id/cancel_card_edit_button"
+                android:id="@+id/cancel_deck_edit_button"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 android:text="@string/cancel" />
 
             <Button
-                android:id="@+id/accept_card_edit_button"
+                android:id="@+id/accept_deck_edit_button"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -4,12 +4,15 @@
     tools:context=".StatisticsFragment">
 
     <data>
+        <import type="android.view.View" />
+
         <variable
             name="number_decks"
             type="Integer" />
+
         <variable
-            name="number_cards"
-            type="Integer" />
+            name="viewModel"
+            type="es.uam.eps.dadm.cards.StatisticViewModel" />
     </data>
 
     <RelativeLayout
@@ -41,7 +44,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:text="@{@string/number_cards(number_cards)}" />
+                android:text="@{@string/number_cards(viewModel.numberCards)}" />
 
         </LinearLayout>
 

@@ -25,11 +25,11 @@ class DeckAdapter : RecyclerView.Adapter<DeckAdapter.DeckHolder>() {
                 it.findNavController()
                     .navigate(
                         DeckListFragmentDirections
-                            .actionDeckListFragmentToCardListFragment(deck.id))
+                            .actionDeckListFragmentToCardListFragment(deck.deckId))
             }
 
             local.deleteButton.setOnClickListener {
-                CardsApplication.delDeck(deck)
+                // TODO: Delete deck not working
                 notifyItemRemoved(position)
                 notifyItemRangeChanged(position, data.size)
             }
@@ -38,7 +38,7 @@ class DeckAdapter : RecyclerView.Adapter<DeckAdapter.DeckHolder>() {
                 it.findNavController()
                     .navigate(
                         DeckListFragmentDirections
-                            .actionDeckListFragmentToDeckEditFragment(deck.id))
+                            .actionDeckListFragmentToDeckEditFragment(deck.deckId))
             }
         }
     }

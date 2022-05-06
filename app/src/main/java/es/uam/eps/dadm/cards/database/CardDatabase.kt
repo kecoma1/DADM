@@ -1,10 +1,40 @@
 package es.uam.eps.dadm.cards.database
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import es.uam.eps.dadm.cards.Card
+import es.uam.eps.dadm.cards.Deck
 
-@Database(entities = [Card::class], version = 1, exportSchema = false)
+@Database(entities = [Card::class, Deck::class], version = 3, exportSchema = false)
 abstract class CardDatabase : RoomDatabase() {
     abstract val cardDao: CardDao
+
+    /* Must be done by an executor */
+    fun addAllCards(cards: List<Card>) {
+        for (c in cards)
+            cardDao.addCard(c)
+    }
+
+    companion object {
+        @Volatile
+        private var INSTANCE: CardDatabase? = null
+
+        fun getInstance(context: Context): CardDatabase {
+            var instance = INSTANCE
+
+            if (instance == null) {
+                instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    CardDatabase::class.java,
+                    "cards_database"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+                INSTANCE = instance
+            }
+            return instance
+        }
+    }
 }

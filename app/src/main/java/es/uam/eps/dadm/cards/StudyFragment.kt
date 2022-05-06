@@ -88,8 +88,14 @@ class StudyFragment : Fragment() {
             false
         )
 
-        viewModel.updateCards()
         binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.dueCard.observe(viewLifecycleOwner) {
+            viewModel.card = it
+            binding.invalidateAll()
+        }
+
+        // viewModel.updateCards()
 
         binding.apply {
             // Listener for the answer button

@@ -43,4 +43,6 @@
     <string name="drawer_desc">Drawer\'s header image</string>
     <string name="number_cards">Total cards %d</string>
     <string name="number_decks">Total decks %d</string>
+    <string name="settings_menu_title">Settings</string>
+    <string name="logout_menu_title">Logout</string>
 </resources>

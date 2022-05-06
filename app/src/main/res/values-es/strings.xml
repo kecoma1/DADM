@@ -43,4 +43,6 @@
     <string name="drawer_desc">Imagen del encabezado</string>
     <string name="number_cards">Cartas %d</string>
     <string name="number_decks">Mazos %d</string>
+    <string name="settings_menu_title">Ajustes</string>
+    <string name="logout_menu_title">Logout</string>
 </resources>

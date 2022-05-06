@@ -43,7 +43,7 @@
             app:popExitAnim="@anim/fade_out" />
         <argument
             android:name="deckId"
-            app:argType="string" />
+            app:argType="long" />
     </fragment>
 
     <fragment
@@ -113,6 +113,6 @@
             app:popExitAnim="@anim/fade_out" />
         <argument
             android:name="deckId"
-            app:argType="string" />
+            app:argType="long" />
     </fragment>
 </navigation>

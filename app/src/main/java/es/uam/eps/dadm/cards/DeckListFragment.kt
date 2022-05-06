@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentDeckListBinding
+import java.util.concurrent.Executors
 
 class DeckListFragment: Fragment() {
     private lateinit var adapter: DeckAdapter
+
+    private val executor = Executors.newSingleThreadExecutor()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,11 +32,13 @@ class DeckListFragment: Fragment() {
         binding.deckListRecyclerView.adapter = adapter
 
         binding.newDeckFab.setOnClickListener {
-            val deck = Deck("", "")
-            CardsApplication.addDeck(deck)
+            val deck = Deck(name = "", deckId = Deck.lastDeckId+1)
+            executor.execute {
+                CardDatabase.getInstance(this.requireContext()).cardDao.addDeck(deck)
+            }
 
             it.findNavController()
-                .navigate(DeckListFragmentDirections.actionDeckListFragmentToDeckEditFragment(deck.id))
+                .navigate(DeckListFragmentDirections.actionDeckListFragmentToDeckEditFragment(deck.deckId))
         }
 
         return binding.root

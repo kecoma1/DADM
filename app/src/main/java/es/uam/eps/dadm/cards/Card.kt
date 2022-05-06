@@ -17,25 +17,26 @@ open class Card(
     var answer: String,
     var date: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString(),
     @PrimaryKey
-    var id: String = UUID.randomUUID().toString()
+    var id: String = UUID.randomUUID().toString(),
+    var deckId: Long = 0
 ) {
-    private var quality: Int? = null
+    var quality: Int? = null
 
     var answered = false
 
     // For the SM2 algorithm
     var repetitions: Int = 0
-    private var interval: Long = 1L
+    var interval: Long = 1L
     var nextPracticeDate = date
-    private var easiness: Double = 2.5
+    var easiness: Double = 2.5
         set(value) {
             easinessReduced = String.format("%.2f", value)
             field = value
         }
 
     // For statistics
-    private var timesDone: Int = 0
-    private var successes: Int = 0
+    var timesDone: Int = 0
+    var successes: Int = 0
 
     /*
     * ATTENTION:
