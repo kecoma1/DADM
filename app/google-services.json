@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "232605152755",
+    "project_id": "kevindelacobamalam",
+    "storage_bucket": "kevindelacobamalam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232605152755:android:3652f9e49234e8f0cace86",
+        "android_client_info": {
+          "package_name": "es.uam.eps.dadm.cards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232605152755-rtspf1f6oheemoaiu7462j7odo8gnvu0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.uam.eps.dadm.cards",
+            "certificate_hash": "5f644a44a2af00c890e51907291ee98bad137468"
+          }
+        },
+        {
+          "client_id": "232605152755-36ie6i229r79c2fngtdj3bqknda0ac0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcjQcgDVHozu35pZGgW_mIwo48qbn2Fv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232605152755-36ie6i229r79c2fngtdj3bqknda0ac0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

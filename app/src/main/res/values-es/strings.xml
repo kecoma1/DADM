@@ -45,4 +45,19 @@
     <string name="number_decks">Mazos %d</string>
     <string name="settings_menu_title">Ajustes</string>
     <string name="logout_menu_title">Logout</string>
+
+    <string name="title_activity_settings">Ajustes</string>
+
+    <!-- Preference Titles -->
+    <string name="decks_header">Mazos</string>
+
+    <!-- Maximum number of cards Preferences -->
+    <string name="max_number_cards">Número máximo de cartas</string>
+
+    <!-- Board Preferences -->
+    <string name="board_title">Mostrar pizarra</string>
+    <string name="board_summary_on">Pizarra disponible</string>
+    <string name="board_summary_off">Pizarra no disponible</string>
+
+
 </resources>

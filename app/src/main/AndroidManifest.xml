@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cards">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
             android:name=".TitleActivity"
             android:exported="true">
             <intent-filter>
@@ -21,8 +25,7 @@
         </activity>
         <activity
             android:name=".StudyActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

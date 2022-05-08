@@ -1,5 +1,6 @@
 package es.uam.eps.dadm.cards
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -27,10 +28,19 @@ class CardListFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.settings -> {
-                // Code that starts the preferences of the app
+                startActivity(Intent(requireContext(), SettingsActivity::class.java))
+            }
+
+            android.R.id.home -> {
+                //onBackPressed()
+                return true
             }
         }
         return true
+    }
+
+    private fun onBackPressed() {
+        TODO("Not yet implemented")
     }
 
     override fun onCreateView(
@@ -45,6 +55,8 @@ class CardListFragment: Fragment() {
             container,
             false
         )
+
+        SettingsActivity.setLoggedIn(requireContext(), true)
 
         val args = CardListFragmentArgs.fromBundle(requireArguments())
 
