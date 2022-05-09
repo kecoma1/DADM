@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.firebase.database.FirebaseDatabase
 import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentCardListBinding
 import java.util.concurrent.Executors
@@ -15,6 +16,10 @@ class CardListFragment: Fragment() {
     private lateinit var adapter: CardAdapter
 
     private val executor = Executors.newSingleThreadExecutor()
+
+    private var reference = FirebaseDatabase
+        .getInstance()
+        .getReference("cards")
 
     private val cardListViewModel by lazy {
         ViewModelProvider(this).get(CardListViewModel::class.java)
@@ -37,6 +42,11 @@ class CardListFragment: Fragment() {
             }
         }
         return true
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     private fun onBackPressed() {
@@ -66,9 +76,10 @@ class CardListFragment: Fragment() {
 
         binding.newCardFab.setOnClickListener {
             val card = Card("", "", deckId = args.deckId)
-            executor.execute {
-                CardDatabase.getInstance(this.requireContext()).cardDao.addCard(card)
-            }
+//            executor.execute {
+//                CardDatabase.getInstance(this.requireContext()).cardDao.addCard(card)
+//            }
+            reference.child(card.id).setValue(card)
 
             it.findNavController()
                 .navigate(CardListFragmentDirections.actionCardListFragmentToCardEditFragment(card.id))

@@ -20,6 +20,15 @@ open class Card(
     var id: String = UUID.randomUUID().toString(),
     var deckId: Long = 0
 ) {
+
+    constructor() : this(
+        "question",
+        "answer",
+        LocalDateTime.now().toString(),
+        UUID.randomUUID().toString(),
+        0
+    )
+
     var quality: Int? = null
 
     var answered = false
