@@ -49,10 +49,6 @@ class CardListFragment: Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun onBackPressed() {
-        TODO("Not yet implemented")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
