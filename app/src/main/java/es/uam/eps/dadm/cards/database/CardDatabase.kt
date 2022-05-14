@@ -11,12 +11,6 @@ import es.uam.eps.dadm.cards.Deck
 abstract class CardDatabase : RoomDatabase() {
     abstract val cardDao: CardDao
 
-    /* Must be done by an executor */
-    fun addAllCards(cards: List<Card>) {
-        for (c in cards)
-            cardDao.addCard(c)
-    }
-
     companion object {
         @Volatile
         private var INSTANCE: CardDatabase? = null

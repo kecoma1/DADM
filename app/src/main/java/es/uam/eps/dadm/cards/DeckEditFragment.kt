@@ -89,7 +89,7 @@ class DeckEditFragment : Fragment() {
 
             if (deck.name.isEmpty())
                 executor.execute {
-                    CardDatabase.getInstance(this.requireContext()).cardDao.delDeck(deck)
+                    CardDatabase.getInstance(this.requireContext()).cardDao.deleteDeck(deck)
                 }
             restore()
             goToDeckListFragment(it)
@@ -102,7 +102,7 @@ class DeckEditFragment : Fragment() {
         // When back is pressed instead of "cancel"
         if (deck.name.isEmpty())
             executor.execute {
-                CardDatabase.getInstance(this.requireContext()).cardDao.delDeck(deck)
+                CardDatabase.getInstance(this.requireContext()).cardDao.deleteDeck(deck)
             }
     }
 }

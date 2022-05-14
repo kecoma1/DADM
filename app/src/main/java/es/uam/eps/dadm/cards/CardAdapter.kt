@@ -1,7 +1,7 @@
 package es.uam.eps.dadm.cards
 
 
-import android.app.Application
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +9,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.ListItemCardBinding
+import java.util.concurrent.Executors
 
 
 class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
     private lateinit var binding: ListItemCardBinding
     var data = listOf<Card>()
 
-    inner class CardHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class CardHolder(view: View, private var context: Context) : RecyclerView.ViewHolder(view) {
 
         private var local = binding
+        private val executor = Executors.newSingleThreadExecutor()
 
         fun bind(card: Card, position: Int) {
             local.card = card
@@ -39,7 +41,9 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
             }
 
             local.deleteButton.setOnClickListener {
-                // TODO: Delete not working
+                executor.execute {
+                    CardDatabase.getInstance(context).cardDao.deleteCard(card)
+                }
                 notifyItemRemoved(position)
                 notifyItemRangeChanged(position, data.size)
             }
@@ -53,7 +57,7 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.CardHolder>() {
     ): CardHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         binding = ListItemCardBinding.inflate(layoutInflater, parent, false)
-        return CardHolder(binding.root)
+        return CardHolder(binding.root, parent.context)
     }
 
     override fun getItemCount() = data.size

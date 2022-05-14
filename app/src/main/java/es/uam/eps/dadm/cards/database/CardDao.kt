@@ -25,6 +25,9 @@ interface CardDao {
     @Delete
     fun deleteCard(card: Card)
 
+    @Query("SELECT * FROM decks_table")
+    fun getDecks(): LiveData<List<Deck>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addDeck(deck: Deck)
 
@@ -32,7 +35,10 @@ interface CardDao {
     fun updateDeck(deck: Deck)
 
     @Delete
-    fun delDeck(deck: Deck)
+    fun deleteDeck(deck: Deck)
+
+    @Query("DELETE FROM cards_table WHERE deckId = :id")
+    fun deleteDeckCards(id: Long)
 
     @Transaction
     @Query("SELECT * FROM decks_table")

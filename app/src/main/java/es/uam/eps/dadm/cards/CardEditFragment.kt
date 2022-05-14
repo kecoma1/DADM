@@ -90,11 +90,12 @@ class CardEditFragment : Fragment() {
         binding.acceptCardEditButton.setOnClickListener {
             if (card.question.isEmpty() || card.answer.isEmpty())
                 Snackbar.make(it, resources.getString(R.string.ask_for_values), Snackbar.LENGTH_LONG).show()
-            else goToCardListFragment(it)
-
-            // Updating the card
-            executor.execute {
-                CardDatabase.getInstance(this.requireContext()).cardDao.updateCard(card)
+            else {
+                // Updating the card
+                executor.execute {
+                    CardDatabase.getInstance(this.requireContext()).cardDao.updateCard(card)
+                }
+                goToCardListFragment(it)
             }
         }
 

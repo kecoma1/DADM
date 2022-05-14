@@ -17,10 +17,6 @@ class CardListFragment: Fragment() {
 
     private val executor = Executors.newSingleThreadExecutor()
 
-    private var reference = FirebaseDatabase
-        .getInstance()
-        .getReference("cards")
-
     private val cardListViewModel by lazy {
         ViewModelProvider(this).get(CardListViewModel::class.java)
     }
@@ -72,10 +68,9 @@ class CardListFragment: Fragment() {
 
         binding.newCardFab.setOnClickListener {
             val card = Card("", "", deckId = args.deckId)
-//            executor.execute {
-//                CardDatabase.getInstance(this.requireContext()).cardDao.addCard(card)
-//            }
-            reference.child(card.id).setValue(card)
+            executor.execute {
+                CardDatabase.getInstance(this.requireContext()).cardDao.addCard(card)
+            }
 
             it.findNavController()
                 .navigate(CardListFragmentDirections.actionCardListFragmentToCardEditFragment(card.id))

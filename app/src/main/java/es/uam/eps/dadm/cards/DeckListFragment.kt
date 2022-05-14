@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentDeckListBinding
@@ -15,6 +16,10 @@ class DeckListFragment: Fragment() {
     private lateinit var adapter: DeckAdapter
 
     private val executor = Executors.newSingleThreadExecutor()
+
+    private val deckListViewModel by lazy {
+        ViewModelProvider(this).get(DeckListViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +44,11 @@ class DeckListFragment: Fragment() {
 
             it.findNavController()
                 .navigate(DeckListFragmentDirections.actionDeckListFragmentToDeckEditFragment(deck.deckId))
+        }
+
+        deckListViewModel.decks.observe(viewLifecycleOwner) {
+            adapter.data = it
+            adapter.notifyDataSetChanged()
         }
 
         return binding.root
