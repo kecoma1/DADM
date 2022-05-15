@@ -2,6 +2,7 @@ package es.uam.eps.dadm.cards
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -29,7 +30,6 @@ class DeckListFragment: Fragment() {
     private val deckListViewModel by lazy {
         ViewModelProvider(this).get(DeckListViewModel::class.java)
     }
-
     private val cardListViewModel by lazy {
         ViewModelProvider(this).get(CardListViewModel::class.java)
     }
@@ -38,7 +38,7 @@ class DeckListFragment: Fragment() {
         super.onStart()
         auth = Firebase.auth
 
-        // A user is logged in in this fragment
+        // A user is logged in this fragment
         reference = FirebaseDatabase.getInstance().getReference(auth.currentUser!!.uid)
     }
 
@@ -94,9 +94,46 @@ class DeckListFragment: Fragment() {
         }
 
         binding.uploadButton.setOnClickListener {
-            reference.child("decks").setValue(deckListViewModel.decks)
-            reference.child("cards").setValue(cardListViewModel.cards)
+            // Lambda that displays an error message
+            val failUploadListener = { _: Exception ->
+                Snackbar.make(binding.root, R.string.upload_fail, Snackbar.LENGTH_SHORT).show()
+            }
+
+            // Uploading to firebase
+            reference.child("decks").setValue(deckListViewModel.decks.value)
+                .addOnFailureListener(failUploadListener)
+            reference.child("cards").setValue(cardListViewModel.cards.value)
+                .addOnFailureListener(failUploadListener)
+
+            // Success snackbar
             Snackbar.make(binding.root, R.string.upload_success, Snackbar.LENGTH_SHORT).show()
+        }
+
+        binding.downloadButton.setOnClickListener {
+            // Lambda that displays an error message
+            val failDownloadListener = { _: Exception ->
+                Snackbar.make(binding.root, R.string.download_fail, Snackbar.LENGTH_SHORT).show()
+            }
+
+            // Downloading decks and cards from firebase
+            reference.child("decks").get().addOnSuccessListener {
+                val decks = Deck.fromFirebaseToDecks(it)
+                executor.execute {
+                    for (deck in decks)
+                        CardDatabase.getInstance(this.requireContext()).cardDao.addDeck(deck)
+                }
+            }.addOnFailureListener(failDownloadListener)
+
+            reference.child("cards").get().addOnSuccessListener {
+                val cards = Card.fromFirebaseToCards(it)
+                executor.execute {
+                    for (card in cards)
+                        CardDatabase.getInstance(this.requireContext()).cardDao.addCard(card)
+                }
+            }.addOnFailureListener(failDownloadListener)
+
+            // Success snackbar
+            Snackbar.make(binding.root, R.string.download_success, Snackbar.LENGTH_SHORT).show()
         }
 
         // Loading cards and decks

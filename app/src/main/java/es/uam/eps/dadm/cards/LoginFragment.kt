@@ -36,6 +36,7 @@ class LoginFragment : Fragment() {
             false
         )
 
+        (activity as TitleActivity).setDrawerLock(true)
         return binding.root
     }
 
@@ -78,14 +79,15 @@ class LoginFragment : Fragment() {
                 Snackbar.make(
                     binding.root,
                     if (signinOrLogin) R.string.signin_success
-                    else R.string.signin_success
+                    else R.string.login_success
                     , Snackbar.LENGTH_SHORT).show()
                 goToDeckListFragment(view)
+                (activity as TitleActivity).setDrawerLock(false)
             } else {
                 Snackbar.make(
                     binding.root,
                     if (signinOrLogin) R.string.signin_failure
-                    else R.string.signin_failure,
+                    else R.string.login_failure,
                     Snackbar.LENGTH_SHORT).show()
             }
         }

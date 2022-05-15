@@ -1,5 +1,6 @@
 package es.uam.eps.dadm.cards
 
+import androidx.annotation.Nullable
 import androidx.room.ColumnInfo
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -9,6 +10,10 @@ import kotlin.math.max
 import kotlin.math.roundToLong
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.ktx.Firebase
 
 @Entity(tableName = "cards_table")
 open class Card(
@@ -18,8 +23,19 @@ open class Card(
     var date: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString(),
     @PrimaryKey
     var id: String = UUID.randomUUID().toString(),
-    var deckId: Long = 0
+    var deckId: Long = 0,
+    var userId: String = Firebase.auth.currentUser!!.uid
 ) {
+
+    companion object {
+        fun fromFirebaseToCards(snapshot: DataSnapshot): List<Card> {
+            val listOfCards = mutableListOf<Card>()
+            for (child in snapshot.children)
+                child.getValue(Card::class.java)?.let { listOfCards.add(it) }
+
+            return listOfCards
+        }
+    }
 
     constructor() : this(
         "question",

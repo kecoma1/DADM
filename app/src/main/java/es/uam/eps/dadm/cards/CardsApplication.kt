@@ -15,8 +15,8 @@ class CardsApplication : Application() {
         val cardDatabase = CardDatabase.getInstance(this)
 
         // Creating decks
-        val japanese = Deck(deckId = 0, name = "Japanese")
-        val quotes = Deck(deckId = 1, name = "Quotes")
+//        val japanese = Deck(deckId = 0, name = "Japanese")
+//        val quotes = Deck(deckId = 1, name = "Quotes")
 
         // Adding cards
 //        japanese.cards.apply {
@@ -50,10 +50,10 @@ class CardsApplication : Application() {
 //        }
 
         // Adding the decks to the application
-        decks.apply {
-            add(japanese)
-            add(quotes)
-        }
+//        decks.apply {
+//            add(japanese)
+//            add(quotes)
+//        }
 
 //        cards.apply {
 //            addAll(japanese.cards)

@@ -88,6 +88,8 @@ class StudyFragment : Fragment() {
             false
         )
 
+        viewModel.reload()
+
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.dueCard.observe(viewLifecycleOwner) {

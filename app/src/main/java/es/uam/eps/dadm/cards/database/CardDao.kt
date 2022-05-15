@@ -10,8 +10,11 @@ import es.uam.eps.dadm.cards.DeckWithCards
 @Dao
 interface CardDao {
 
-    @Query("SELECT * FROM cards_table")
-    fun getCards(): LiveData<List<Card>>
+    @Query("SELECT * FROM cards_table WHERE userId = :userId")
+    fun getCards(userId: String): LiveData<List<Card>>
+
+    @Query("SELECT * FROM cards_table WHERE userId = :userId LIMIT :n")
+    fun getNCards(userId: String, n: Int): LiveData<List<Card>>
 
     @Query("SELECT * FROM cards_table WHERE id = :id")
     fun getCard(id: String): LiveData<Card?>
@@ -25,8 +28,8 @@ interface CardDao {
     @Delete
     fun deleteCard(card: Card)
 
-    @Query("SELECT * FROM decks_table")
-    fun getDecks(): LiveData<List<Deck>>
+    @Query("SELECT * FROM decks_table WHERE userId = :userId")
+    fun getDecks(userId: String): LiveData<List<Deck>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addDeck(deck: Deck)

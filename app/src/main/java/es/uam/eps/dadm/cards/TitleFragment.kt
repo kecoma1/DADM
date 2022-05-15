@@ -13,7 +13,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import es.uam.eps.dadm.cards.databinding.FragmentTitleBinding
 
-
 class TitleFragment: Fragment() {
 
     private lateinit var auth: FirebaseAuth
@@ -41,6 +40,9 @@ class TitleFragment: Fragment() {
                 view.findNavController()
                     .navigate(R.id.action_titleFragment_to_loginFragment)
         }
+
+        if (currentUser == null)
+                (activity as TitleActivity).setDrawerLock(true)
 
         return binding.root
     }

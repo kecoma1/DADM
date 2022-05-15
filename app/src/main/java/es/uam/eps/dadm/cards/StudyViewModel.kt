@@ -2,6 +2,8 @@ package es.uam.eps.dadm.cards
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import es.uam.eps.dadm.cards.database.CardDatabase
 import timber.log.Timber
 import java.time.LocalDateTime
@@ -11,14 +13,20 @@ class StudyViewModel(application: Application) : AndroidViewModel(application) {
     private val executor = Executors.newSingleThreadExecutor()
     private val context = getApplication<Application>().applicationContext
     var card: Card? = null
-    var cards: LiveData<List<Card>> = CardDatabase.getInstance(context).cardDao.getCards()
+    var cards: LiveData<List<Card>> = CardDatabase
+        .getInstance(context)
+        .cardDao
+        .getNCards(
+            Firebase.auth.currentUser!!.uid,
+            SettingsActivity.getMaximumNumberOfCards(context)!!.toInt()
+        )
 
     var dueCard: LiveData<Card?> = Transformations.map(cards) {
         try {
-            it.filter {
-               c -> c.isDue()
-            }.random()
-        } catch (e: Exception) { null }
+            it.filter { c -> c.isDue() }.random()
+        } catch (e: Exception) {
+            null
+        }
     }
 
     private var _nDueCards = MutableLiveData<Int>()
@@ -39,6 +47,17 @@ class StudyViewModel(application: Application) : AndroidViewModel(application) {
         executor.execute {
             CardDatabase.getInstance(context).cardDao.updateCard(card!!)
         }
+    }
+
+    fun reload() {
+        card = null
+        cards = CardDatabase
+                .getInstance(context)
+                .cardDao
+                .getNCards(
+                    Firebase.auth.currentUser!!.uid,
+                    SettingsActivity.getMaximumNumberOfCards(context)!!.toInt()
+                )
     }
 
     override fun onCleared() {

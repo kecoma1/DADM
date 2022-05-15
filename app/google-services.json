@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "335546994647",
+    "firebase_url": "https://kevindelacobamalamcards-59fe5-default-rtdb.europe-west1.firebasedatabase.app/",
+    "project_id": "kevindelacobamalamcards-59fe5",
+    "storage_bucket": "kevindelacobamalamcards-59fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335546994647:android:0e3246bc459a4ab4ca8592",
+        "android_client_info": {
+          "package_name": "es.uam.eps.dadm.cards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335546994647-nube8f01561e8cofo538ah3fe794h199.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxd_HlXmWUQ4j2Ki-2sy5N_LDAvDAriSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335546994647-nube8f01561e8cofo538ah3fe794h199.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,15 +2,26 @@ package es.uam.eps.dadm.cards
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity(tableName = "decks_table")
 class Deck(
     var id: String = UUID.randomUUID().toString(),
     @PrimaryKey val deckId: Long,
-    var name: String
+    var name: String,
+    var userId: String = Firebase.auth.currentUser!!.uid
 ) {
     init { lastDeckId = deckId }
+
+    constructor() : this(
+        UUID.randomUUID().toString(),
+        lastDeckId,
+        "deck",
+    )
 
     /*
     *
@@ -24,5 +35,13 @@ class Deck(
 
     companion object {
         var lastDeckId : Long = 0
+
+        fun fromFirebaseToDecks(snapshot: DataSnapshot): List<Deck> {
+            val listOfDecks = mutableListOf<Deck>()
+            for (child in snapshot.children)
+                child.getValue(Deck::class.java)?.let { listOfDecks.add(it) }
+
+            return listOfDecks.filter { it.userId == Firebase.auth.currentUser!!.uid }
+        }
     }
 }
