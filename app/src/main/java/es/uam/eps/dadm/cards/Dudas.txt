@@ -1,3 +1,0 @@
-- No se ven los botones
-- Como cargar la una View
-- Como descargar el google-services.json

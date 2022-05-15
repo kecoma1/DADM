@@ -7,18 +7,27 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentCardListBinding
 import java.util.concurrent.Executors
 
 class CardListFragment: Fragment() {
     private lateinit var adapter: CardAdapter
-
+    private lateinit var auth: FirebaseAuth
     private val executor = Executors.newSingleThreadExecutor()
 
     private val cardListViewModel by lazy {
         ViewModelProvider(this).get(CardListViewModel::class.java)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        auth = Firebase.auth
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -28,13 +37,15 @@ class CardListFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            android.R.id.home -> { true }
             R.id.settings -> {
                 startActivity(Intent(requireContext(), SettingsActivity::class.java))
             }
-
-            android.R.id.home -> {
-                //onBackPressed()
-                return true
+            R.id.log_out -> {
+                auth.signOut()
+                this.findNavController()
+                    .navigate(CardListFragmentDirections
+                        .actionCardListFragmentToLoginFragment())
             }
         }
         return true

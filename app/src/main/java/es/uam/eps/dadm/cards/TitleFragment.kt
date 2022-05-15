@@ -8,10 +8,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import es.uam.eps.dadm.cards.databinding.FragmentTitleBinding
 
 
 class TitleFragment: Fragment() {
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +30,16 @@ class TitleFragment: Fragment() {
             false
         )
 
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+
         binding.titleRelLayout.setOnClickListener { view ->
-            view.findNavController()
-                .navigate(R.id.action_titleFragment_to_deckListFragment)
+            if (currentUser != null)
+                view.findNavController()
+                    .navigate(R.id.action_titleFragment_to_deckListFragment)
+            else
+                view.findNavController()
+                    .navigate(R.id.action_titleFragment_to_loginFragment)
         }
 
         return binding.root

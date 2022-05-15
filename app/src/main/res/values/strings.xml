@@ -45,6 +45,26 @@
     <string name="number_decks">Total decks %d</string>
     <string name="settings_menu_title">Settings</string>
     <string name="logout_menu_title">Logout</string>
+    <string name="upload_cards">Upload cards</string>
+    <string name="download_cards">Download cards</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Introduce the email</string>
+    <string name="password_hint">Introduce the password</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="app_login">Cards Login</string>
+    <string name="signin_success">Sign-in successful</string>
+    <string name="login_success">Log-in successful</string>
+    <string name="signin_failure">Sign-in failure</string>
+    <string name="login_failure">Log-in failure</string>
+    <string name="ask_for_input">Introduce an email and a password</string>
+    <string name="wrong_email_format">Wrong email format email@email.com</string>
+    <string name="short_password">Password too short, minimum 8 characters</string>
+    <string name="upload_success">Upload successful</string>
+    <string name="download_success">Download successful</string>
+    <string name="upload_fail">Upload failed</string>
+    <string name="download_fail">Download failed</string>
 
     <string name="title_activity_settings">Settings</string>
 

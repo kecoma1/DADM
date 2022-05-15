@@ -45,6 +45,28 @@
     <string name="number_decks">Mazos %d</string>
     <string name="settings_menu_title">Ajustes</string>
     <string name="logout_menu_title">Logout</string>
+    <string name="upload_cards">Cargar cartas</string>
+    <string name="download_cards">Descargar cartas</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="email_hint">Introduce el Email</string>
+    <string name="password_hint">Introduce la contraseña</string>
+    <string name="login">Login</string>
+    <string name="signup">Registrarse</string>
+    <string name="signin_success">Sign-in exitoso</string>
+    <string name="login_success">Log-in exitoso</string>
+    <string name="signin_failure">Sign-in fallido</string>
+    <string name="login_failure">Log-in fallido</string>
+    <string name="ask_for_input">Introduce un email y una contraseña</string>
+    <string name="wrong_email_format">Formato de email incorrecto email@email.com</string>
+    <string name="short_password">Contraseña muy corta, mínimo 8 caracteres</string>
+    <string name="upload_success">Carga exitosa</string>
+    <string name="download_success">Descarga exitosa</string>
+    <string name="upload_fail">Carga fallida</string>
+    <string name="download_fail">Descarga fallida</string>
+
+
+    <string name="app_login">Cards Login</string>
 
     <string name="title_activity_settings">Ajustes</string>
 
