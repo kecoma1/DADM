@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import es.uam.eps.dadm.cards.database.CardDatabase
 import es.uam.eps.dadm.cards.databinding.FragmentCardListBinding

@@ -1,6 +1,5 @@
 package es.uam.eps.dadm.cards
 
-import androidx.annotation.Nullable
 import androidx.room.ColumnInfo
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -10,7 +9,6 @@ import kotlin.math.max
 import kotlin.math.roundToLong
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.ktx.Firebase

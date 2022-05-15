@@ -23,14 +23,4 @@ class StatisticViewModel(application: Application)
 
     val decks: LiveData<List<DeckWithCards>> =
         CardDatabase.getInstance(context).cardDao.getDecksWithCards()
-
-    private val deckSelected = MutableLiveData<Long>()
-
-    val deckWithCards: LiveData<List<DeckWithCards>> = Transformations.switchMap(deckSelected) {
-        CardDatabase.getInstance(context).cardDao.getDeckWithCards(it)
-    }
-
-    fun loadDeckId(id: Long) {
-        deckSelected.value = id
-    }
 }

@@ -6,7 +6,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import es.uam.eps.dadm.cards.database.CardDatabase
 import timber.log.Timber
-import java.time.LocalDateTime
 import java.util.concurrent.Executors
 
 class StudyViewModel(application: Application) : AndroidViewModel(application) {

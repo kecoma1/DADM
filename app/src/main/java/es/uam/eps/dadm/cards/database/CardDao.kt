@@ -1,6 +1,5 @@
 package es.uam.eps.dadm.cards.database
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import es.uam.eps.dadm.cards.Card

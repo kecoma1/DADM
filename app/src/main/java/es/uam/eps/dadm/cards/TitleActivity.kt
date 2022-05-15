@@ -11,7 +11,7 @@ import es.uam.eps.dadm.cards.databinding.ActivityTitleBinding
 
 class TitleActivity : AppCompatActivity() {
     lateinit var binding: ActivityTitleBinding
-    lateinit var drawer: DrawerLayout
+    private lateinit var drawer: DrawerLayout
 
     fun setDrawerLock(value: Boolean) {
         drawer.setDrawerLockMode(
